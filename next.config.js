@@ -4,10 +4,10 @@ const withAntdLess = require("next-plugin-antd-less");
 const pluginAntdLess = withAntdLess({
 	modifyVars: {
 		hack: `true;@import "${require.resolve(
-			"./styles/vendor-theme/less/theme.less"
+			"./src/styles/vendor-theme/less/theme.less"
 		)}";`,
 	},
-	lessVarsFilePath: "./styles/vendor-theme/less/variables.less",
+	lessVarsFilePath: "./src/styles/vendor-theme/less/variables.less",
 });
 
 module.exports = withPlugins([[pluginAntdLess]], {
