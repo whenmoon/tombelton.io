@@ -1,14 +1,19 @@
-.container {
-	position: absolute;
-	height: 100vh;
-	top: 5%;
+.navOverlayContainer {
+	/*position: absolute;*/
+	/*height: 100vh;*/
+	/*top: 5%;*/
 	/*left: 2%;*/
 	/*background-color: #f7f7f7;*/
 	/*left: 1%;*/
-	padding: 0 0.5rem;
+	/*padding: 0 0.5rem;*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color:transparent;
 }
 
-.containerDark {
+.navOverlayContainerDark {
 	position: absolute;
   height: 100vh;
 	top: 5%;
@@ -17,17 +22,18 @@
 }
 
 .pageContainer {
-	background-color: #f7f7f7;
+	background-color: white;
 	min-height: 100vh;
 	padding: 0 0.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/*height: 2000px*/
 	/*position: absolute;*/
 }
 
 .pageContainerDark {
-	background-color: black;
+	background-color:#0f0f0f;
 	min-height: 100vh;
 	padding: 0 0.5rem;
 	display: flex;
@@ -37,9 +43,9 @@
 }
 
 .fleetingFeatureGrid {
-	border-color: black;
+	/*border-color: black;
 	border-width: 1px;
-	border-style: solid;
+	border-style: solid;*/
 	width: 80vw;
 	height: 90vh;
 	display: flex;

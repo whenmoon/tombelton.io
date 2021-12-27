@@ -47,7 +47,10 @@ export function NavOverlay(props: Props): ReactElement {
 	const { darkTheme, setDarkTheme } = props;
 
 	return (
-		<div className={darkTheme ? styles.containerDark : styles.container}>
+		<div className={darkTheme
+			? styles.navOverlayContainerDark
+			: styles.navOverlayContainer}
+		>
 			<ToastContainer
 				position="top-right"
 				autoClose={5000}
@@ -55,11 +58,11 @@ export function NavOverlay(props: Props): ReactElement {
 				newestOnTop={false}
 				pauseOnHover
 			/>
-			<div style={{ width: '256px' }}>
+			<div style={{ width: '15%', marginLeft: '1%' }}>
 				<Button
 					type="primary"
 					onClick={toggleCollapseMenu}
-					style={{ marginBottom: 16 }}
+					style={{ marginBottom: '1%', marginTop: '20%' }}
 					icon={menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 				/>
 				<Menu
@@ -68,6 +71,7 @@ export function NavOverlay(props: Props): ReactElement {
 					mode="inline"
 					theme={darkTheme ? "dark" : "light"}
 					inlineCollapsed={menuCollapsed}
+					style={{ marginTop: '1%' }}
 				>
 					<SubMenu key="sub1" icon={<ThunderboltTwoTone />} title="Projects" >
 						<Menu.Item key="5" icon={<VideoCameraTwoTone />} onClick={selectProject}>Fleeting</Menu.Item>
@@ -89,7 +93,13 @@ export function NavOverlay(props: Props): ReactElement {
 				size="large"
 				onClick={() => setDarkTheme(prevState => !prevState)}
 				icon={<BgColorsOutlined />}
-				style={{ top: '60%' }}
+				style={{
+					marginLeft: '1%',
+					marginTop: '50%',
+					position: 'absolute',
+					top: 0,
+					bottom: 0
+				}}
 			/>
 		</div>
 	)

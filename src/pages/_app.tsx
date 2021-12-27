@@ -5,7 +5,7 @@ import { useState } from 'react';
 require('../styles/vendor-theme/less/theme.less');
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-	const [darkTheme, setDarkTheme] = useState(true);
+	const [darkTheme, setDarkTheme] = useState(false);
 
 	return (
 		<>
