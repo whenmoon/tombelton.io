@@ -14,7 +14,6 @@ import {
 import styles from '../styles/Home.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { MenuInfo } from 'rc-menu/lib/interface';
 
 const { SubMenu } = Menu;
 
@@ -32,11 +31,11 @@ export function NavOverlay(props: Props): ReactElement {
 		}, 1000);
 	}, [])
 
-	function toggleCollapseMenu() {
+	function toggleCollapseMenu(): void {
 		setMenuCollapsed(prevState => (!prevState))
 	}
 
-	function selectProject(e: MenuInfo) {
+	function selectProject(): void {
 		if (!menuCollapsed) {
 			setTimeout(() => {
 				toggleCollapseMenu();
@@ -44,7 +43,11 @@ export function NavOverlay(props: Props): ReactElement {
 		}
 	}
 
-	const { darkTheme, setDarkTheme } = props;
+	function setDarkTheme(): void {
+		props.setDarkTheme(prevState => !prevState)
+	}
+
+	const { darkTheme } = props;
 
 	return (
 		<div className={darkTheme
@@ -58,11 +61,11 @@ export function NavOverlay(props: Props): ReactElement {
 				newestOnTop={false}
 				pauseOnHover
 			/>
-			<div style={{ width: '15%', marginLeft: '1%' }}>
+			<div className={styles.menuContainer}>
 				<Button
 					type="primary"
 					onClick={toggleCollapseMenu}
-					style={{ marginBottom: '1%', marginTop: '20%' }}
+					className={styles.navExpandButton}
 					icon={menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 				/>
 				<Menu
@@ -71,7 +74,8 @@ export function NavOverlay(props: Props): ReactElement {
 					mode="inline"
 					theme={darkTheme ? "dark" : "light"}
 					inlineCollapsed={menuCollapsed}
-					style={{ marginTop: '1%' }}
+					//style={{ marginTop: '1%' }}
+					className={styles.navMenu}
 				>
 					<SubMenu key="sub1" icon={<ThunderboltTwoTone />} title="Projects" >
 						<Menu.Item key="5" icon={<VideoCameraTwoTone />} onClick={selectProject}>Fleeting</Menu.Item>
@@ -91,19 +95,10 @@ export function NavOverlay(props: Props): ReactElement {
 			<Button
 				type="primary"
 				size="large"
-				onClick={() => setDarkTheme(prevState => !prevState)}
+				onClick={setDarkTheme}
 				icon={<BgColorsOutlined />}
-				style={{
-					marginLeft: '1%',
-					marginTop: '50%',
-					position: 'absolute',
-					top: 0,
-					bottom: 0
-				}}
+				className={styles.themeButton}
 			/>
 		</div>
 	)
 }
-
-// width: 256, position: "absolute", top: '2%', left: '2%', right: 0 
-// position: "absolute", bottom: '2%', left: '2%', right: 0 

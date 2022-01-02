@@ -4,12 +4,12 @@ import { NavOverlay } from '../components/NavOverlay';
 import { useState } from 'react';
 require('../styles/vendor-theme/less/theme.less');
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component: Home, pageProps }: AppProps) => {
 	const [darkTheme, setDarkTheme] = useState(false);
 
 	return (
 		<>
-			<Component
+			<Home
 				{...pageProps}
 				darkTheme={darkTheme}
 			/>
@@ -20,4 +20,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 		</>
 	)
 }
-export default MyApp
+export default App

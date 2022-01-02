@@ -1,11 +1,4 @@
 .navOverlayContainer {
-	/*position: absolute;*/
-	/*height: 100vh;*/
-	/*top: 5%;*/
-	/*left: 2%;*/
-	/*background-color: #f7f7f7;*/
-	/*left: 1%;*/
-	/*padding: 0 0.5rem;*/
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -17,19 +10,16 @@
 	position: absolute;
   height: 100vh;
 	top: 5%;
-	/*left: 1%;*/
 	padding: 0 0.5rem;
 }
 
 .pageContainer {
-	background-color: white;
+	background-color: rgb(219, 219, 219);
 	min-height: 100vh;
 	padding: 0 0.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/*height: 2000px*/
-	/*position: absolute;*/
 }
 
 .pageContainerDark {
@@ -39,22 +29,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/*position: absolute;*/
 }
 
 .fleetingFeatureGrid {
-	/*border-color: black;
-	border-width: 1px;
-	border-style: solid;*/
-	width: 80vw;
+	width: 60vw;
 	height: 90vh;
 	display: flex;
 }
 
 .fleetingFeaturePanel {
-	/*border-color: blue;
-	border-width: 1px;
-	border-style: solid;*/
 	width: 50%;
 	height: 100%;
 }
@@ -65,4 +48,36 @@
 	align-items: center;
 	height: 100%;
 	width: 100%;
+}
+
+.stepsContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.navMenuContainer {
+	width: 15; 
+	margin-left: 1%;
+}
+
+.navMenu {
+	margin-top: 1%;
+}
+
+.navExpandButton {
+	margin-bottom: 1%; 
+	margin-top: 20% 
+}
+
+.themeButton {
+	margin-left: 1%;
+	margin-top: 90vh;
+	position: absolute;
+	top: 0;
+	bottom: 0;
 }
