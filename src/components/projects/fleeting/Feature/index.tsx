@@ -5,32 +5,15 @@ import ProjectSteps from '../FeatureSteps';
 import { Divider } from 'antd';
 import { FleetingData } from '../../../../pages/projects/fleeting/data'
 
-interface Props {
-	darkTheme: boolean;
-	data: FleetingData
-}
+interface Props { data: FleetingData }
 
 export default function Feature(props: Props) {
-	const [playedSeconds, setPlayedSecconds] = useState(0)
-	const { darkTheme, data } = props;
-	//const step = (() => {
-	//	switch (true) {
-	//		case playedSeconds < 13:
-	//			return 0;
-	//		case playedSeconds < 28:
-	//			return 1;
-	//		case playedSeconds < 40:
-	//			return 2;
-	//		case playedSeconds < 68:
-	//			return 3;
-	//		case playedSeconds >= 68:
-	//			return 4;
-	//		default: return 0;
-	//	}
-	//})()
-
-	function callStepTimer(seconds: number) {
-		setPlayedSecconds(data.step(seconds))
+	const [step, setStep] = useState(0)
+	const { data } = props;
+	console.log('RENDER -------------------->',);
+	function stepTimer(playedSeconds: number) {
+		const step = data.step(playedSeconds);
+		setStep(step)
 	}
 
 	return (
@@ -44,7 +27,7 @@ export default function Feature(props: Props) {
 				</div>
 				<div className={styles.fleetingFeaturePanel} >
 					<div className={styles.fleetingFeaturePanelVideoContainer} >
-						<VideoPlayer setPlayedSecconds={callStepTimer} />
+						<VideoPlayer setPlayedSecconds={stepTimer} />
 					</div>
 				</div>
 			</div>
