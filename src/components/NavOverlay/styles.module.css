@@ -1,0 +1,17 @@
+.navOverlayContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+}
+
+.navMenuContainer {
+	width: 256px;
+	margin-top: 2%;
+	margin-left: 2%;
+}
+
+.navMenu {
+	margin-top: 2% !important;
+}

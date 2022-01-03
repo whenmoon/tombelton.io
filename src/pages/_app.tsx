@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { NavOverlay } from '../components/NavOverlay';
+import { NavOverlay } from '../components/NavOverlay/NavOverlay';
 import { useState } from 'react';
 require('../styles/vendor-theme/less/theme.less');
 

@@ -1,0 +1,35 @@
+.featureContainer {
+	background-color: rgb(219, 219, 219);
+	min-height: 100vh;
+	padding: 0 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fleetingFeatureGrid {
+	width: 60vw;
+	height: 90vh;
+	display: flex;
+}
+
+.fleetingFeaturePanel {
+	width: 50%;
+	height: 100%;
+}
+
+.fleetingFeaturePanelVideoContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 80%;
+	margin-left: 20px;
+}
+
+.dividerContainer {
+	display: flex; 
+	align-items: center; 
+	justify-content: center;
+	height: 100%;
+}

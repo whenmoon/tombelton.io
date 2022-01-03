@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { Steps } from "antd";
-import styles from '../../../../styles/Home.module.css'
+import styles from './styles.module.css'
 
 interface Props {
 	step: number;

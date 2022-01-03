@@ -11,14 +11,13 @@ import {
 	MenuFoldOutlined,
 	ThunderboltTwoTone
 } from '@ant-design/icons';
-import styles from '../styles/Home.module.css'
+import styles from './styles.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const { SubMenu } = Menu;
 
 interface Props {
-	darkTheme: boolean;
 	setDarkTheme: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -47,13 +46,8 @@ export function NavOverlay(props: Props): ReactElement {
 		props.setDarkTheme(prevState => !prevState)
 	}
 
-	const { darkTheme } = props;
-
 	return (
-		<div className={darkTheme
-			? styles.navOverlayContainerDark
-			: styles.navOverlayContainer}
-		>
+		<div className={styles.navOverlayContainer}>
 			<ToastContainer
 				position="top-right"
 				autoClose={5000}
@@ -61,20 +55,18 @@ export function NavOverlay(props: Props): ReactElement {
 				newestOnTop={false}
 				pauseOnHover
 			/>
-			<div className={styles.menuContainer}>
+			<div className={styles.navMenuContainer}>
 				<Button
 					type="primary"
 					onClick={toggleCollapseMenu}
-					className={styles.navExpandButton}
 					icon={menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 				/>
 				<Menu
 					//defaultSelectedKeys={['0']}
 					//defaultOpenKeys={['sub1']}
 					mode="inline"
-					theme={darkTheme ? "dark" : "light"}
+					theme="light"
 					inlineCollapsed={menuCollapsed}
-					//style={{ marginTop: '1%' }}
 					className={styles.navMenu}
 				>
 					<SubMenu key="sub1" icon={<ThunderboltTwoTone />} title="Projects" >
@@ -92,13 +84,6 @@ export function NavOverlay(props: Props): ReactElement {
 					</Menu.Item>
 				</Menu>
 			</div>
-			<Button
-				type="primary"
-				size="large"
-				onClick={setDarkTheme}
-				icon={<BgColorsOutlined />}
-				className={styles.themeButton}
-			/>
 		</div>
 	)
 }

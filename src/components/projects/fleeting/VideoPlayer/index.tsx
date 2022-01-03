@@ -22,7 +22,6 @@ export default function VideoPlayer(props: Props) {
 		<>
 			<ReactPlayer
 				url="/assets/sign_up_trimmed_grey_rotato_4k.mp4"
-				width="100%"
 				height="100%"
 				controls={false}
 				playing
