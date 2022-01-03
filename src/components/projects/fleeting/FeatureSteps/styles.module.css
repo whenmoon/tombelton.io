@@ -1,9 +1,18 @@
 .stepsContainer {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
 	height: 100%;
 	width: 100%;
 	padding-left: 10%;
 	padding-right: 10%;
+	margin-top: 22%;
+}
+
+.titleContainer {
+	height: 10%;	
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10%;
 }
