@@ -13,7 +13,7 @@ const { Step } = Steps;
 export default function ProjectSteps(props: Props): ReactElement {
 	const { step, title } = props;
 
-	function progressDot(dot: ReactElement) { return dot }
+	function progressDot(dot: ReactElement) { return dot };
 
 	return (
 		<div className={styles.stepsContainer}>

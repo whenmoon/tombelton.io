@@ -1,11 +1,13 @@
 export interface FleetingData {
 	title: string;
 	step: (playedSeconds: number) => number;
+	videoUrl: string;
 };
 
 const data: FleetingData[] = [
 	{
 		title: 'Sign Up',
+		videoUrl: "/assets/sign_up_trimmed_grey_rotato_4k.mp4",
 		step: (playedSeconds: number) => {
 			switch (true) {
 				case playedSeconds < 13:
@@ -24,6 +26,7 @@ const data: FleetingData[] = [
 	},
 	{
 		title: 'Sign Up',
+		videoUrl: "/assets/sign_up_trimmed_grey_rotato_4k.mp4",
 		step: (playedSeconds: number) => {
 			switch (true) {
 				case playedSeconds < 13:
