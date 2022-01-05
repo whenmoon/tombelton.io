@@ -1,18 +1,36 @@
-.stepsContainer {
+.stepsPanelContainer {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	height: 100%;
+	justify-content: center;
+	align-items: flex-end;
+	height: 70vh;
 	width: 100%;
-	padding-left: 10%;
-	padding-right: 10%;
-	margin-top: 22%;
+	/*border: 1px green solid;*/
+}
+
+.stepsContainer {
+	max-width: 400px;
+	padding-right: 50px;
+	/*border: 1px red solid;*/
 }
 
 .titleContainer {
-	height: 10%;	
+	/*border: 1px red solid;*/
+	max-width: 400px;
+	width: 100%;
+	min-height: 120px;
 	display: flex;
 	justify-content: center;
-	margin-bottom: 10%;
+	align-items: center;
+	margin-top: -50px;
+}
+
+.titleInnerContainer {
+	display: flex;
+	justify-content: center;
+	/*border: 1px red solid;*/
+}
+
+.downIcon {
+	border: 1px red solid;
 }

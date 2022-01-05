@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 import React, { useRef, useState } from 'react';
 import VideoPlayer from '../VideoPlayer'
-import ProjectSteps from '../FeatureSteps';
+import FeatureSteps from '../FeatureSteps';
 import { Divider } from 'antd';
 import { FleetingData } from '../../../../pages/projects/fleeting/data'
 import useIsOnScreen from '../../../../hooks/useIsOnScreen';
@@ -25,17 +25,12 @@ export default function Feature(props: Props) {
 		<div className={styles.featureContainer}>
 			<div className={styles.fleetingFeatureGrid}>
 				<div className={styles.fleetingFeaturePanel} >
-					<ProjectSteps step={step} title={data.title} />
+					<FeatureSteps step={step} title={data.title} />
 				</div>
 				<div className={styles.dividerContainer}>
-					<div ref={visibilityRefTop} style={{
-						width: 5, height: 5, backgroundColor: 'red', alignSelf: 'center', marginBottom: 500
-					}} />
-					<Divider type='vertical' style={{ height: '80%' }
-					} />
-					<div ref={visibilityRefBottom} style={{
-						width: 5, height: 5, backgroundColor: 'red', alignSelf: 'center', marginTop: 500
-					}} />
+					<div ref={visibilityRefTop} />
+					<Divider type='vertical' style={{ height: '80%' }} />
+					<div ref={visibilityRefBottom} />
 				</div>
 				<div className={styles.fleetingFeaturePanel} >
 					<div className={styles.fleetingFeaturePanelVideoContainer} >

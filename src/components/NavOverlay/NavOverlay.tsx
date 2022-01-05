@@ -4,7 +4,6 @@ import {
 	VideoCameraTwoTone,
 	GithubFilled,
 	LinkedinFilled,
-	BgColorsOutlined,
 	BulbTwoTone,
 	ExperimentTwoTone,
 	MenuUnfoldOutlined,
