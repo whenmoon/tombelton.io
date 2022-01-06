@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, RefObject, useState } from "react";
 import { Steps } from "antd";
 import styles from './styles.module.css'
 import { DownCircleOutlined } from '@ant-design/icons';
@@ -6,18 +6,29 @@ import { DownCircleOutlined } from '@ant-design/icons';
 interface Props {
 	step: number;
 	title: string;
+	index: number;
+	scrollToRefs: RefObject<(HTMLDivElement | null)[]>;
 }
 
 const { Step } = Steps;
 
-export default function ProjectSteps(props: Props): ReactElement {
+export default function FeatureSteps(props: Props): ReactElement {
 	const [mouseOverIcon, setMouseOverIcon] = useState(false);
-	const { step, title } = props;
+	const { step, title, index, scrollToRefs } = props;
 
 	function progressDot(dot: ReactElement) { return dot };
 
 	function onIconMouseEnterAndExit() {
 		setMouseOverIcon((prevState) => !prevState)
+	}
+
+	const isScrollRef = scrollToRefs.current && scrollToRefs.current[index + 1];
+
+	function onIconClick() {
+		if (isScrollRef) {
+			const scrollRef = scrollToRefs.current[index + 1];
+			scrollRef!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
 	}
 
 	return (
@@ -41,15 +52,17 @@ export default function ProjectSteps(props: Props): ReactElement {
 					className={styles.downIconInnerContainer}
 					onMouseEnter={onIconMouseEnterAndExit}
 					onMouseLeave={onIconMouseEnterAndExit}
+					onClick={onIconClick}
 				>
-					<DownCircleOutlined
-						style={{
-							fontSize: 30, color: mouseOverIcon
-								? 'rgb(51, 146, 259)'
-								: 'rgb(159, 159, 159)'
-						}}
-						twoToneColor="rgb(62, 142, 247)"
-					/>
+					{isScrollRef &&
+						<DownCircleOutlined
+							style={{
+								fontSize: 30, color: mouseOverIcon
+									? 'rgb(51, 146, 259)'
+									: 'rgb(159, 159, 159)'
+							}}
+						/>
+					}
 				</div>
 			</div>
 		</div>

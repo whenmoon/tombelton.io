@@ -1,16 +1,20 @@
 import styles from './styles.module.css'
-import React, { useRef, useState } from 'react';
+import React, { RefObject, useRef, useState } from 'react';
 import VideoPlayer from '../VideoPlayer'
 import FeatureSteps from '../FeatureSteps';
 import { Divider } from 'antd';
 import { FleetingData } from '../../../../pages/projects/fleeting/data'
 import useIsOnScreen from '../../../../hooks/useIsOnScreen';
 
-interface Props { data: FleetingData }
+interface Props {
+	data: FleetingData;
+	index: number;
+	scrollToRefs: RefObject<(HTMLDivElement | null)[]>;
+}
 
 export default function Feature(props: Props) {
 	const [step, setStep] = useState(0)
-	const { data } = props;
+	const { data, scrollToRefs, index } = props;
 
 	const visibilityRefTop = useRef(null)
 	const visibilityRefBottom = useRef(null)
@@ -24,8 +28,16 @@ export default function Feature(props: Props) {
 	return (
 		<div className={styles.featureContainer}>
 			<div className={styles.fleetingFeatureGrid}>
-				<div className={styles.fleetingFeaturePanel} >
-					<FeatureSteps step={step} title={data.title} />
+				<div
+					className={styles.fleetingFeaturePanel}
+					ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }}
+				>
+					<FeatureSteps
+						step={step}
+						title={data.title}
+						index={index}
+						scrollToRefs={scrollToRefs}
+					/>
 				</div>
 				<div className={styles.dividerContainer}>
 					<div ref={visibilityRefTop} />
@@ -36,7 +48,7 @@ export default function Feature(props: Props) {
 					<VideoPlayer setPlayedSecconds={stepTimer} playing={isVisible} />
 				</div>
 			</div>
-		</div>
+		</div >
 	)
 }
 
