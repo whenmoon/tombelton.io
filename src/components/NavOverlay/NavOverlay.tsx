@@ -13,25 +13,30 @@ import {
 import styles from './styles.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { WindowDimensions } from '../../hooks/useWindowSize';
+import useWindowDimensions from '../../hooks/useWindowSize';
 
 const { SubMenu } = Menu;
 
-interface Props {
-	windowDimensions: WindowDimensions;
-}
-
-export function NavOverlay(props: Props): ReactElement {
+export function NavOverlay(): ReactElement {
 	const [menuCollapsed, setMenuCollapsed] = useState(true);
-
-	const { windowDimensions } = props;
-	const smallWindow = windowDimensions.width < 1000;
 
 	useEffect(() => {
 		setTimeout(() => {
 			toast.dark("Welcome! Use the menu on the left to view stuff! :)")
 		}, 1000);
 	}, [])
+
+	const windowDimensions = useWindowDimensions()
+
+	const smallScreen = windowDimensions.width < 1000;
+	const showDropdownNavMenu = (smallScreen && !menuCollapsed) || !smallScreen;
+
+	useEffect(() => {
+		if (smallScreen && !menuCollapsed) {
+			setMenuCollapsed(true);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [smallScreen])
 
 	function toggleCollapseMenu(): void {
 		setMenuCollapsed(prevState => (!prevState))
@@ -45,17 +50,15 @@ export function NavOverlay(props: Props): ReactElement {
 		}
 	}
 
-	const showDropdownNavMenu = (smallWindow && menuCollapsed) || !smallWindow;
-
 	return (
 		<div className={styles.navOverlayContainer}>
-			<ToastContainer
+			{!smallScreen && < ToastContainer
 				position="top-right"
 				autoClose={5000}
 				hideProgressBar={false}
 				newestOnTop={false}
 				pauseOnHover
-			/>
+			/>}
 			<div className={styles.navMenuContainer}>
 				<Button
 					type="primary"
@@ -66,7 +69,7 @@ export function NavOverlay(props: Props): ReactElement {
 					<Menu
 						mode="inline"
 						theme="light"
-						inlineCollapsed={menuCollapsed}
+						inlineCollapsed={menuCollapsed || smallScreen}
 						className={styles.navMenu}
 					>
 						<SubMenu key="sub1" icon={<ThunderboltTwoTone />} title="Projects" >

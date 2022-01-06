@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { throttle } from "lodash";
 export interface WindowDimensions {
 	width: number;
 	height: number;
@@ -27,8 +27,10 @@ export default function useWindowDimensions() {
 			setWindowDimensions(getWindowDimensions());
 		}
 
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
+		const throttledResizeHandler = throttle(handleResize, 500)
+
+		window.addEventListener('resize', throttledResizeHandler);
+		return () => window.removeEventListener('resize', throttledResizeHandler);
 	}, []);
 
 	return windowDimensions;

@@ -33,7 +33,6 @@ export default function VideoPlayer(props: Props): ReactElement {
 					playing={playing}
 					muted
 					loop
-					//playbackRate={1.25}
 					onProgress={onProgress}
 					progressInterval={1000}
 				/>

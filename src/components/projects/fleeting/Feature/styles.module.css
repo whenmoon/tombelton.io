@@ -4,7 +4,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/*border: 1px blue solid;*/
+	border: 1px blue solid;
+}
+
+@media screen and (min-width: 2600px) {
+	.featureContainer {
+		min-height: 70vh;
+	}
 }
 
 .featureContainerSmall {
@@ -31,15 +37,15 @@
 	/*border: 1px blue solid;*/
 }
 
+@media screen and (max-width: 1000px) {
+	.fleetingFeaturePanel {
+		display: none;
+	}
+}
+
 .dividerContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center; 
 	justify-content: center;
-}
-
-@media screen and (max-width: 1000px) {
-	.fleetingFeaturePanel {
-		display: none;
-	}
 }

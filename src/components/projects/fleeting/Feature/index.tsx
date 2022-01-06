@@ -5,6 +5,7 @@ import FeatureSteps from '../FeatureSteps';
 import { Divider } from 'antd';
 import { FleetingData } from '../../../../pages/projects/fleeting/data'
 import useIsOnScreen from '../../../../hooks/useIsOnScreen';
+import useWindowDimensions from '../../../../hooks/useWindowSize';
 
 interface Props {
 	data: FleetingData;
@@ -13,20 +14,19 @@ interface Props {
 }
 
 export default function Feature(props: Props): ReactElement {
-	const [step, setStep] = useState(0)
+	const [step, setStep] = useState(0);
 	const { data: { goToStep, title, stepDetails, videoUrl }, scrollToRefs, index } = props;
 
 	const visibilityRefTop = useRef(null);
 	const visibilityRefBottom = useRef(null);
 	const isVisible = useIsOnScreen(visibilityRefTop, visibilityRefBottom, true);
+	const windowDimensions = useWindowDimensions()
+	const smallScreen = windowDimensions?.width < 1000;
 
 	function stepTimer(playedSeconds: number): void {
 		const step = goToStep(playedSeconds);
 		setStep(step)
 	}
-
-	//const smallScreen = windowDimensions?.width < 1000;
-	const smallScreen = true;
 
 	const videoPlayer = (
 		<VideoPlayer
