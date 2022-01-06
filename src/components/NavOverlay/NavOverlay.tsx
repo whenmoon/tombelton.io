@@ -13,11 +13,19 @@ import {
 import styles from './styles.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { WindowDimensions } from '../../hooks/useWindowSize';
 
 const { SubMenu } = Menu;
 
-export function NavOverlay(): ReactElement {
+interface Props {
+	windowDimensions: WindowDimensions;
+}
+
+export function NavOverlay(props: Props): ReactElement {
 	const [menuCollapsed, setMenuCollapsed] = useState(true);
+
+	const { windowDimensions } = props;
+	const smallWindow = windowDimensions.width < 1000;
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -37,6 +45,8 @@ export function NavOverlay(): ReactElement {
 		}
 	}
 
+	const showDropdownNavMenu = (smallWindow && menuCollapsed) || !smallWindow;
+
 	return (
 		<div className={styles.navOverlayContainer}>
 			<ToastContainer
@@ -52,26 +62,28 @@ export function NavOverlay(): ReactElement {
 					onClick={toggleCollapseMenu}
 					icon={menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 				/>
-				<Menu
-					mode="inline"
-					theme="light"
-					inlineCollapsed={menuCollapsed}
-					className={styles.navMenu}
-				>
-					<SubMenu key="sub1" icon={<ThunderboltTwoTone />} title="Projects" >
-						<Menu.Item key="5" icon={<VideoCameraTwoTone />} onClick={selectProject}>Fleeting</Menu.Item>
-						<Menu.Item key="6" icon={<ExperimentTwoTone />} onClick={selectProject}>Dumpstr</Menu.Item>
-					</SubMenu>
-					<Menu.Item key="1" icon={<BulbTwoTone />}>
-						About Me
-					</Menu.Item>
-					<Menu.Item key="2" icon={<GithubFilled />}>
-						GitHub
-					</Menu.Item>
-					<Menu.Item key="3" icon={<LinkedinFilled />}>
-						LinkedIn
-					</Menu.Item>
-				</Menu>
+				{showDropdownNavMenu &&
+					<Menu
+						mode="inline"
+						theme="light"
+						inlineCollapsed={menuCollapsed}
+						className={styles.navMenu}
+					>
+						<SubMenu key="sub1" icon={<ThunderboltTwoTone />} title="Projects" >
+							<Menu.Item key="5" icon={<VideoCameraTwoTone />} onClick={selectProject}>Fleeting</Menu.Item>
+							<Menu.Item key="6" icon={<ExperimentTwoTone />} onClick={selectProject}>Dumpstr</Menu.Item>
+						</SubMenu>
+						<Menu.Item key="1" icon={<BulbTwoTone />}>
+							About Me
+						</Menu.Item>
+						<Menu.Item key="2" icon={<GithubFilled />}>
+							GitHub
+						</Menu.Item>
+						<Menu.Item key="3" icon={<LinkedinFilled />}>
+							LinkedIn
+						</Menu.Item>
+					</Menu>
+				}
 			</div>
 		</div>
 	)

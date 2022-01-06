@@ -1,5 +1,20 @@
-.fleetingFeaturePanelVideoContainer {
-	margin-left: 20px;
-	width: 100%;
+.fleetingFeatureVideoContainer {
 	/*border: 1px burlywood solid;*/
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
+
+
+@media screen and (min-width: 1600px) {
+	.fleetingFeatureVideo {
+		height: 800px;
+	}
+}
+
+@media screen and (min-width: 2600px) {
+	.fleetingFeatureVideo {
+		height: 1200px;
+	}
 }

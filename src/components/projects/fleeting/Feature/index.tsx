@@ -25,6 +25,25 @@ export default function Feature(props: Props): ReactElement {
 		setStep(step)
 	}
 
+	//const smallScreen = windowDimensions?.width < 1000;
+	const smallScreen = true;
+
+	const videoPlayer = (
+		<VideoPlayer
+			setPlayedSecconds={stepTimer}
+			playing={isVisible}
+			videoUrl={videoUrl}
+		/>
+	);
+
+	if (smallScreen) {
+		return (
+			<div className={styles.featureContainerSmall}>
+				{videoPlayer}
+			</div>
+		)
+	};
+
 	return (
 		<div className={styles.featureContainer}>
 			<div className={styles.fleetingFeatureGrid}>
@@ -44,15 +63,11 @@ export default function Feature(props: Props): ReactElement {
 					<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
 				</div>
 				<div className={styles.fleetingFeaturePanel} >
-					<VideoPlayer
-						setPlayedSecconds={stepTimer}
-						playing={isVisible}
-						videoUrl={videoUrl}
-					/>
+					{videoPlayer}
 				</div>
 			</div>
 		</div >
 	)
-}
+};
 
 //style={{ width: 5, height: 5, backgroundColor: 'red' }}
