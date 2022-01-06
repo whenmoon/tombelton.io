@@ -2,29 +2,31 @@ import React, { ReactElement, RefObject, useState } from "react";
 import { Steps } from "antd";
 import styles from './styles.module.css'
 import { DownCircleOutlined } from '@ant-design/icons';
+import { StepDetail } from "../../../../pages/projects/fleeting/data";
 
 interface Props {
 	step: number;
 	title: string;
 	index: number;
 	scrollToRefs: RefObject<(HTMLDivElement | null)[]>;
+	stepDetails: StepDetail[];
 }
 
 const { Step } = Steps;
 
 export default function FeatureSteps(props: Props): ReactElement {
 	const [mouseOverIcon, setMouseOverIcon] = useState(false);
-	const { step, title, index, scrollToRefs } = props;
+	const { step, title, index, scrollToRefs, stepDetails } = props;
 
 	function progressDot(dot: ReactElement) { return dot };
 
-	function onIconMouseEnterAndExit() {
+	function onIconMouseEnterAndExit(): void {
 		setMouseOverIcon((prevState) => !prevState)
 	}
 
 	const isScrollRef = scrollToRefs.current && scrollToRefs.current[index + 1];
 
-	function onIconClick() {
+	function onIconClick(): void {
 		if (isScrollRef) {
 			const scrollRef = scrollToRefs.current[index + 1];
 			scrollRef!.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -40,11 +42,12 @@ export default function FeatureSteps(props: Props): ReactElement {
 			</div>
 			<div className={styles.stepsContainer}>
 				<Steps current={step} progressDot={progressDot} direction="vertical">
-					<Step title="Sign up" description="Sign up using your phone number" />
-					<Step title="Error hanlding" description="Credential validation takes place on both the front and back ends" />
-					<Step title="Sign up" description="Receieve an SMS with OTP code" />
-					<Step title="Sign up" description="Add more account details" />
-					<Step title="Account" description="Sign out" />
+					{stepDetails.map(({ title, description }) => (
+						<Step
+							title={title}
+							description={description}
+							key={`key ${title}`} />
+					))}
 				</Steps>
 			</div>
 			<div className={styles.downIconContainer}>
