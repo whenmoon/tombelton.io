@@ -1,15 +1,17 @@
 .featureContainer {
 	background-color: rgb(219, 219, 219);
-	min-height: 80vh;
-	padding: 0 0.5rem;
+	min-height: 60vh;
+	/*padding: 0 0.5rem;*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/*border: 1px blue solid;*/
 }
 
 .fleetingFeatureGrid {
 	width: 60vw;
 	display: flex;
+	/*border: 1px blue solid;*/
 }
 
 .fleetingFeaturePanel {
@@ -20,16 +22,10 @@
 	/*border: 1px blue solid;*/
 }
 
-.fleetingFeaturePanelVideoContainer {
-	margin-left: 20px;
-	width: 100%;
-	/*border: 1px burlywood solid;*/
-}
-
 .dividerContainer {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center; 
 	justify-content: center;
-	height: 65vh;
+	/*height: 65vh;*/
 }

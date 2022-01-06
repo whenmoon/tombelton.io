@@ -33,11 +33,11 @@ export default function Feature(props: Props) {
 					<div ref={visibilityRefBottom} />
 				</div>
 				<div className={styles.fleetingFeaturePanel} >
-					<div className={styles.fleetingFeaturePanelVideoContainer} >
-						<VideoPlayer setPlayedSecconds={stepTimer} playing={isVisible} />
-					</div>
+					<VideoPlayer setPlayedSecconds={stepTimer} playing={isVisible} />
 				</div>
 			</div>
-		</div >
+		</div>
 	)
 }
+
+//style={{ width: 5, height: 5, backgroundColor: 'red' }}

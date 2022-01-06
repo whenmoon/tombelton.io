@@ -2,6 +2,7 @@ export interface FleetingData {
 	title: string;
 	step: (playedSeconds: number) => number;
 	videoUrl: string;
+	scrollRef: HTMLDivElement | null;
 };
 
 const data: FleetingData[] = [
@@ -22,7 +23,8 @@ const data: FleetingData[] = [
 					return 4;
 				default: return 0;
 			}
-		}
+		},
+		scrollRef: null,
 	},
 	{
 		title: 'Sign Up',
@@ -41,7 +43,8 @@ const data: FleetingData[] = [
 					return 4;
 				default: return 0;
 			}
-		}
+		},
+		scrollRef: null,
 	},
 ]
 

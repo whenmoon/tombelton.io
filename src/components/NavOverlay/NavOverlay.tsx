@@ -16,11 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const { SubMenu } = Menu;
 
-interface Props {
-	setDarkTheme: Dispatch<SetStateAction<boolean>>;
-}
-
-export function NavOverlay(props: Props): ReactElement {
+export function NavOverlay(): ReactElement {
 	const [menuCollapsed, setMenuCollapsed] = useState(true);
 
 	useEffect(() => {
@@ -41,10 +37,6 @@ export function NavOverlay(props: Props): ReactElement {
 		}
 	}
 
-	function setDarkTheme(): void {
-		props.setDarkTheme(prevState => !prevState)
-	}
-
 	return (
 		<div className={styles.navOverlayContainer}>
 			<ToastContainer
@@ -61,8 +53,6 @@ export function NavOverlay(props: Props): ReactElement {
 					icon={menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 				/>
 				<Menu
-					//defaultSelectedKeys={['0']}
-					//defaultOpenKeys={['sub1']}
 					mode="inline"
 					theme="light"
 					inlineCollapsed={menuCollapsed}

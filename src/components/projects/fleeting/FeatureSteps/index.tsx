@@ -1,7 +1,7 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { Steps } from "antd";
 import styles from './styles.module.css'
-import { UpCircleTwoTone } from '@ant-design/icons';
+import { DownCircleOutlined } from '@ant-design/icons';
 
 interface Props {
 	step: number;
@@ -10,11 +10,15 @@ interface Props {
 
 const { Step } = Steps;
 
-
 export default function ProjectSteps(props: Props): ReactElement {
+	const [mouseOverIcon, setMouseOverIcon] = useState(false);
 	const { step, title } = props;
 
 	function progressDot(dot: ReactElement) { return dot };
+
+	function onIconMouseEnterAndExit() {
+		setMouseOverIcon((prevState) => !prevState)
+	}
 
 	return (
 		<div className={styles.stepsPanelContainer}>
@@ -32,9 +36,20 @@ export default function ProjectSteps(props: Props): ReactElement {
 					<Step title="Account" description="Sign out" />
 				</Steps>
 			</div>
-			<div className={styles.titleContainer}>
-				<div className={styles.titleInnerContainer}>
-					<UpCircleTwoTone style={{ fontSize: 30 }} twoToneColor="rgb(62, 142, 247)" />
+			<div className={styles.downIconContainer}>
+				<div
+					className={styles.downIconInnerContainer}
+					onMouseEnter={onIconMouseEnterAndExit}
+					onMouseLeave={onIconMouseEnterAndExit}
+				>
+					<DownCircleOutlined
+						style={{
+							fontSize: 30, color: mouseOverIcon
+								? 'rgb(51, 146, 259)'
+								: 'rgb(159, 159, 159)'
+						}}
+						twoToneColor="rgb(62, 142, 247)"
+					/>
 				</div>
 			</div>
 		</div>

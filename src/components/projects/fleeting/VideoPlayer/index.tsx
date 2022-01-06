@@ -1,4 +1,5 @@
 import ReactPlayer from 'react-player/lazy'
+import styles from './styles.module.css'
 
 interface Props {
 	setPlayedSecconds: (playedSeconds: number) => void;
@@ -20,17 +21,19 @@ export default function VideoPlayer(props: Props) {
 	}
 
 	return (
-		<ReactPlayer
-			url="/assets/sign_up_trimmed_grey_rotato_4k.mp4"
-			height={700}
-			width={400}
-			controls={false}
-			playing={playing}
-			muted
-			loop
-			//playbackRate={1.25}
-			onProgress={onProgress}
-			progressInterval={1000}
-		/>
+		<div className={styles.fleetingFeaturePanelVideoContainer} >
+			<ReactPlayer
+				url="/assets/sign_up_trimmed_grey_rotato_4k.mp4"
+				height={700}
+				width={400}
+				controls={false}
+				playing={playing}
+				muted
+				loop
+				//playbackRate={1.25}
+				onProgress={onProgress}
+				progressInterval={1000}
+			/>
+		</div>
 	)
 }

@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
-	height: 70vh;
+	/*height: 70vh;*/
 	width: 100%;
 	/*border: 1px green solid;*/
 }
@@ -31,6 +31,18 @@
 	/*border: 1px red solid;*/
 }
 
-.downIcon {
-	border: 1px red solid;
+.downIconContainer {
+	/*border: 1px red solid;*/
+	max-width: 400px;
+	width: 100%;
+	/*min-height: 120px;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*align-self: center;*/
+	padding-top: 30px;
+}
+
+.downIconInnerContainer {
+	z-index: 999;
 }
