@@ -1,4 +1,4 @@
 module.exports = {
 	presets: [['next/babel']],
-	plugins: [['import', { libraryName: 'antd', style: true }], ["@emotion"]],
+	plugins: [["@emotion"], ['import', { libraryName: 'antd', style: true }]],
 };

@@ -1,7 +1,6 @@
 import { ReactElement, useState } from 'react';
 import ReactPlayer from 'react-player/lazy'
 import styles from './styles.module.css'
-import ClipLoader from "react-spinners/ClipLoader";
 
 interface Props {
 	setPlayedSecconds: (playedSeconds: number) => void;
@@ -21,6 +20,7 @@ export default function VideoPlayer(props: Props): ReactElement {
 	const { setPlayedSecconds, playing, videoUrl } = props;
 
 	function onBuffer() {
+		console.log('onBuffer -------------------->');
 		setLoading((prevState) => !prevState);
 	}
 
