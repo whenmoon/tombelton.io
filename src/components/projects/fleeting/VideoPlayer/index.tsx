@@ -21,7 +21,7 @@ export default function VideoPlayer(props: Props): ReactElement {
 	const { setPlayedSecconds, playing, videoUrl } = props;
 
 	function onBuffer() {
-		setLoading(true);
+		setLoading((prevState) => !prevState);
 	}
 
 	console.log('loading -------------------->', loading);
