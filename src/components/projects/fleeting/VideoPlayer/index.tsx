@@ -18,6 +18,10 @@ interface PlayerProgressEvent {
 export default function VideoPlayer(props: Props): ReactElement {
 	const { setPlayedSecconds, playing, videoUrl } = props;
 
+	function onBuffer() {
+		console.log('BUFFERING -------------------->');
+	}
+
 	function onProgress(event: PlayerProgressEvent): void {
 		setPlayedSecconds(Math.round(event.playedSeconds))
 	}
@@ -35,6 +39,7 @@ export default function VideoPlayer(props: Props): ReactElement {
 					loop
 					onProgress={onProgress}
 					progressInterval={1000}
+					onBuffer={onBuffer}
 				/>
 			</div>
 		</div>

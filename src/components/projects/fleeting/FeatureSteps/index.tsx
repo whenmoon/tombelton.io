@@ -26,7 +26,7 @@ export default function FeatureSteps(props: Props): ReactElement {
 		stepDetails,
 	} = props;
 
-	function progressDot(dot: ReactElement) { return dot };
+	function progressDot(dot: ReactElement): ReactElement { return dot };
 
 	function onIconMouseEnterAndExit(): void {
 		setMouseOverIcon((prevState) => !prevState)
@@ -52,7 +52,12 @@ export default function FeatureSteps(props: Props): ReactElement {
 					<h1 className={styles.title}>{title}</h1>
 				</div>
 				<div className={styles.infoIconContainer} onClick={onInfoIconClick}>
-					<InfoCircleOutlined style={{ fontSize: 30, color: 'rgb(51, 146, 259)' }} />
+					<InfoCircleOutlined style={{
+						fontSize: 30, color: showStepsOnSmallScreen
+							? 'rgb(51, 146, 259)'
+							: 'rgb(159, 159, 159)'
+					}}
+					/>
 				</div>
 			</div>
 			<div className={showStepsOnSmallScreen ? styles.stepsContainerSmallScreen : styles.stepsContainer}>
@@ -60,7 +65,7 @@ export default function FeatureSteps(props: Props): ReactElement {
 					current={step}
 					progressDot={progressDot}
 					direction="vertical"
-					size={showStepsOnSmallScreen ? "small" : "default"}
+					size="small"
 				>
 					{stepDetails.map(({ title, description }) => (
 						<Step

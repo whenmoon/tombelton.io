@@ -25,6 +25,8 @@ export default function Feature(props: Props): ReactElement {
 		setStep(step)
 	}
 
+
+
 	const featureSteps = (
 		<FeatureSteps
 			step={step}
@@ -44,23 +46,28 @@ export default function Feature(props: Props): ReactElement {
 	);
 
 	return (
-		<div className={styles.featureContainer}>
-			<div className={styles.fleetingFeatureGrid}>
-				<div className={styles.fleetingFeaturePanel}>
-					{featureSteps}
+		<>
+			<div className={styles.featureContainer}>
+				<div className={styles.fleetingFeatureGrid}>
+					<div className={styles.fleetingFeaturePanel}>
+						{featureSteps}
+					</div>
+					<div className={styles.verticalDividerContainer}>
+						<div ref={visibilityRefTop} />
+						<Divider type='vertical' style={{ height: '80%' }} />
+						<div ref={visibilityRefBottom} />
+						<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
+					</div>
+					<div className={styles.fleetingFeaturePanel} >
+						{videoPlayer}
+					</div>
 				</div>
-				<div className={styles.dividerContainer}>
-					<div ref={visibilityRefTop} />
-					<Divider type='vertical' style={{ height: '80%' }} />
-					<div ref={visibilityRefBottom} />
-					<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
-				</div>
-				<div className={styles.fleetingFeaturePanel} >
-					{videoPlayer}
-				</div>
+			</div >
+			<div className={styles.horizontallDividerContainer}>
+				<div />
+				<div className={styles.horizontallDivider} />
+				<div />
 			</div>
-		</div >
+		</>
 	)
 };
-
-//style={{ width: 5, height: 5, backgroundColor: 'red' }}

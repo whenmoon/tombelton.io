@@ -1,5 +1,4 @@
 .fleetingFeatureVideoContainer {
-	/*border: 1px burlywood solid;*/
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -17,3 +16,5 @@
 		height: 1200px;
 	}
 }
+
+/*border: 1px burlywood solid;*/
