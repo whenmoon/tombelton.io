@@ -1,6 +1,7 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import ReactPlayer from 'react-player/lazy'
 import styles from './styles.module.css'
+import ClipLoader from "react-spinners/ClipLoader";
 
 interface Props {
 	setPlayedSecconds: (playedSeconds: number) => void;
@@ -16,11 +17,14 @@ interface PlayerProgressEvent {
 }
 
 export default function VideoPlayer(props: Props): ReactElement {
+	const [loading, setLoading] = useState(false);
 	const { setPlayedSecconds, playing, videoUrl } = props;
 
 	function onBuffer() {
-		console.log('BUFFERING -------------------->');
+		setLoading(true);
 	}
+
+	console.log('loading -------------------->', loading);
 
 	function onProgress(event: PlayerProgressEvent): void {
 		setPlayedSecconds(Math.round(event.playedSeconds))
