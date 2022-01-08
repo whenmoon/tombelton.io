@@ -3,9 +3,8 @@ import React, { ReactElement, RefObject, useRef, useState } from 'react';
 import VideoPlayer from '../VideoPlayer'
 import FeatureSteps from '../FeatureSteps';
 import { Divider } from 'antd';
-import { FleetingData } from '../../../../pages/projects/fleeting/data'
+import { FleetingData } from '../../../../data'
 import useIsOnScreen from '../../../../hooks/useIsOnScreen';
-import useWindowDimensions from '../../../../hooks/useWindowSize';
 
 interface Props {
 	data: FleetingData;
@@ -20,13 +19,21 @@ export default function Feature(props: Props): ReactElement {
 	const visibilityRefTop = useRef(null);
 	const visibilityRefBottom = useRef(null);
 	const isVisible = useIsOnScreen(visibilityRefTop, visibilityRefBottom, true);
-	const windowDimensions = useWindowDimensions()
-	const smallScreen = windowDimensions?.width < 1000;
 
 	function stepTimer(playedSeconds: number): void {
 		const step = goToStep(playedSeconds);
 		setStep(step)
 	}
+
+	const featureSteps = (
+		<FeatureSteps
+			step={step}
+			title={title}
+			index={index}
+			stepDetails={stepDetails}
+			scrollToRefs={scrollToRefs}
+		/>
+	)
 
 	const videoPlayer = (
 		<VideoPlayer
@@ -36,25 +43,11 @@ export default function Feature(props: Props): ReactElement {
 		/>
 	);
 
-	if (smallScreen) {
-		return (
-			<div className={styles.featureContainerSmall}>
-				{videoPlayer}
-			</div>
-		)
-	};
-
 	return (
 		<div className={styles.featureContainer}>
 			<div className={styles.fleetingFeatureGrid}>
 				<div className={styles.fleetingFeaturePanel}>
-					<FeatureSteps
-						step={step}
-						title={title}
-						index={index}
-						scrollToRefs={scrollToRefs}
-						stepDetails={stepDetails}
-					/>
+					{featureSteps}
 				</div>
 				<div className={styles.dividerContainer}>
 					<div ref={visibilityRefTop} />

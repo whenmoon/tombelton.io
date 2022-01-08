@@ -23,7 +23,7 @@ export default function VideoPlayer(props: Props): ReactElement {
 	}
 
 	return (
-		<div className={styles.fleetingFeatureVideoContainer} >
+		<div className={styles.fleetingFeatureVideoContainer}>
 			<div className={styles.fleetingFeatureVideo} >
 				<ReactPlayer
 					url={videoUrl}

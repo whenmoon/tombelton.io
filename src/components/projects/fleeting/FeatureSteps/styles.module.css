@@ -4,13 +4,45 @@
 	justify-content: center;
 	align-items: flex-end;
 	width: 100%;
-	/*border: 1px green solid;*/
+}
+
+@media screen and (max-width: 1000px) {
+	.stepsPanelContainer {
+		align-items: center;
+		/*border: 1px red solid;*/
+	}
 }
 
 .stepsContainer {
 	max-width: 400px;
 	padding-right: 50px;
 	/*border: 1px red solid;*/
+}
+
+@media screen and (max-width: 1000px) {
+	.stepsContainer {
+		display: none;
+	}
+}
+
+.stepsContainerSmallScreen {
+	display: inline;
+	max-width: 400px;
+	height: 100%;
+	padding: 90px 30px 0px 25px;
+	margin-bottom: -60px;
+	/*border: 1px red solid;*/
+}
+
+@media screen and (min-width: 1000px) {
+	.stepsContainerSmallScreen {
+		display: inline;
+		max-width: 400px;
+		height: 100%;
+		padding: 0px 50px 0px 0px;
+		margin-bottom: 0;
+		/*border: 1px red solid;*/
+	}
 }
 
 .titleContainer {
@@ -21,7 +53,69 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: -50px;
+}
+
+@media screen and (max-width: 1000px) {
+	.titleContainer {
+		/*border: 1px green solid;*/
+		margin-top: 0px;
+		margin-bottom: -90px;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: flex-end;
+		z-index: 999;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.titleContainer {
+		margin-bottom: -60px;
+		padding-left: 0;
+		padding-right: 0;
+		/*border: 1px red solid;*/
+		max-width: 250px;
+	}
+}
+
+@media screen and (max-width: 300px) {
+	.titleContainer {
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+}
+
+.title {
+	white-space: nowrap;
+	/*border: 1px red solid;*/
+}
+
+@media screen and (max-width: 600px) {
+	.title {
+		/*border: 1px green solid;*/
+		font-size: xx-large;
+		white-space:normal;
+	}
+}
+
+.infoIconContainer {
+	/*border: 1px blue solid;*/
+	padding-top: 25px;
+	align-self: center;
+	display: none;
+}
+
+@media screen and (max-width: 1000px) {
+	.infoIconContainer {
+		padding-top: 25px;
+		align-self: center;
+		display: inline;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.infoIconContainer {
+		padding-top: 40px;
+	}
 }
 
 .titleInnerContainer {
@@ -42,4 +136,11 @@
 
 .downIconInnerContainer {
 	z-index: 999;
+}
+
+
+@media screen and (max-width: 1000px) {
+	.downIconInnerContainer {
+		display: none;
+	}
 }

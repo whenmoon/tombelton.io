@@ -1,8 +1,8 @@
-import React, { ReactElement, RefObject, useState } from "react";
+import React, { Dispatch, ReactElement, RefObject, SetStateAction, useState } from "react";
 import { Steps } from "antd";
 import styles from './styles.module.css'
-import { DownCircleOutlined } from '@ant-design/icons';
-import { StepDetail } from "../../../../pages/projects/fleeting/data";
+import { InfoCircleOutlined, DownCircleOutlined } from '@ant-design/icons';
+import { StepDetail } from "../../../../data";
 
 interface Props {
 	step: number;
@@ -16,7 +16,15 @@ const { Step } = Steps;
 
 export default function FeatureSteps(props: Props): ReactElement {
 	const [mouseOverIcon, setMouseOverIcon] = useState(false);
-	const { step, title, index, scrollToRefs, stepDetails } = props;
+	const [showStepsOnSmallScreen, setShowStepsOnSmallScreen] = useState(false);
+
+	const {
+		step,
+		title,
+		index,
+		scrollToRefs,
+		stepDetails,
+	} = props;
 
 	function progressDot(dot: ReactElement) { return dot };
 
@@ -26,27 +34,40 @@ export default function FeatureSteps(props: Props): ReactElement {
 
 	const isScrollRef = scrollToRefs.current && scrollToRefs.current[index + 1];
 
-	function onIconClick(): void {
+	function onDownIconClick(): void {
 		if (isScrollRef) {
 			const scrollRef = scrollToRefs.current[index + 1];
 			scrollRef!.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}
 
+	function onInfoIconClick(): void {
+		setShowStepsOnSmallScreen((prevState) => !prevState)
+	}
+
 	return (
 		<div className={styles.stepsPanelContainer}>
 			<div className={styles.titleContainer}>
 				<div className={styles.titleInnerContainer}>
-					<h1>{title}</h1>
+					<h1 className={styles.title}>{title}</h1>
+				</div>
+				<div className={styles.infoIconContainer} onClick={onInfoIconClick}>
+					<InfoCircleOutlined style={{ fontSize: 30, color: 'rgb(51, 146, 259)' }} />
 				</div>
 			</div>
-			<div className={styles.stepsContainer}>
-				<Steps current={step} progressDot={progressDot} direction="vertical">
+			<div className={showStepsOnSmallScreen ? styles.stepsContainerSmallScreen : styles.stepsContainer}>
+				<Steps
+					current={step}
+					progressDot={progressDot}
+					direction="vertical"
+					size={showStepsOnSmallScreen ? "small" : "default"}
+				>
 					{stepDetails.map(({ title, description }) => (
 						<Step
 							title={title}
 							description={description}
-							key={`key ${title}`} />
+							key={`key ${title}`}
+						/>
 					))}
 				</Steps>
 			</div>
@@ -55,7 +76,7 @@ export default function FeatureSteps(props: Props): ReactElement {
 					className={styles.downIconInnerContainer}
 					onMouseEnter={onIconMouseEnterAndExit}
 					onMouseLeave={onIconMouseEnterAndExit}
-					onClick={onIconClick}
+					onClick={onDownIconClick}
 				>
 					{isScrollRef &&
 						<DownCircleOutlined

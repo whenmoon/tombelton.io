@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import Feature from '../../../components/projects/fleeting/Feature';
-import featureData from './data'
+import featureData from '../../../data'
 
 export default function Fleeting() {
 	const scrollToRefs = useRef<(HTMLDivElement | null)[]>([])

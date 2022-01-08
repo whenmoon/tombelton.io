@@ -2,8 +2,8 @@ import { RefObject, useEffect, useRef, useState } from "react"
 
 export default function useIsOnScreen(
 	primaryRef: RefObject<Element | null>,
-	secondaryRef: RefObject<Element | null>,
-	useDualRefs: boolean,
+	secondaryRef?: RefObject<Element | null>,
+	useDualRefs: boolean = false,
 ) {
 	const [isPrimaryIntersecting, setPrimaryIntersecting] = useState(false)
 	const [isSecondaryIntersecting, setSecondaryIntersecting] = useState(false)
@@ -19,7 +19,7 @@ export default function useIsOnScreen(
 			secondaryObserverRef.current = new IntersectionObserver(
 				([entry]) => setSecondaryIntersecting(entry.isIntersecting))
 
-			if (secondaryRef.current) secondaryObserverRef.current.observe(secondaryRef.current)
+			if (secondaryRef && secondaryRef.current) secondaryObserverRef.current.observe(secondaryRef.current)
 		}
 		return () => {
 			primaryObserver.disconnect();

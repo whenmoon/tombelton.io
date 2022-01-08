@@ -1,10 +1,17 @@
 .featureContainer {
 	background-color: rgb(219, 219, 219);
-	min-height: 90vh;
+	min-height: 85vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border: 1px blue solid;
+}
+
+
+@media screen and (max-width: 300px) {
+	.featureContainer {
+		min-height: 50vh;
+	}
 }
 
 @media screen and (min-width: 2600px) {
@@ -13,20 +20,17 @@
 	}
 }
 
-.featureContainerSmall {
-	background-color: rgb(219, 219, 219);
-	/*min-height: 90vh;*/
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0.5%;
-	/*border: 1px blue solid;*/
-}
-
 .fleetingFeatureGrid {
 	width: 60vw;
 	display: flex;
 	/*border: 1px blue solid;*/
+}
+
+@media screen and (max-width: 1000px) {
+	.fleetingFeatureGrid {
+		flex-direction: column;
+		width: 100vw;
+	}
 }
 
 .fleetingFeaturePanel {
@@ -34,12 +38,12 @@
 	justify-content: center;
 	align-items: center;
 	width: 50%;
-	/*border: 1px blue solid;*/
+	/*border: 1px red solid;*/
 }
 
 @media screen and (max-width: 1000px) {
 	.fleetingFeaturePanel {
-		display: none;
+		width: 100%;
 	}
 }
 
