@@ -1,13 +1,13 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { Dispatch, ReactElement, SetStateAction, useEffect, useState } from 'react';
 import ReactPlayer from 'react-player/lazy'
 import styles from './styles.module.css'
-import Loader from '../../../Loader/Loader';
 import VideoPlayerThumbnail from '../../../VideoPlayerThumbnail/VideoPlayerThumbnail';
 interface Props {
 	setPlayedSecconds: (playedSeconds: number) => void;
-	playing: boolean;
+	isVisible: boolean;
 	videoUrl: string;
 	thumbnailUrl: string;
+	setOverlayVideoLoader: Dispatch<SetStateAction<boolean>>
 }
 
 interface PlayerProgressEvent {
@@ -18,17 +18,23 @@ interface PlayerProgressEvent {
 }
 
 export default function VideoPlayer(props: Props): ReactElement {
-	const [play, setPlay] = useState(false)
-	const { setPlayedSecconds, playing, videoUrl, thumbnailUrl } = props;
-
-	function onReady(): void {
-		console.log('Ready -------------------->');
-	}
+	const [playClicked, setPlayClicked] = useState(false);
+	const [playingBack, setPlayingBack] = useState(false);
+	const {
+		setPlayedSecconds,
+		isVisible,
+		videoUrl,
+		thumbnailUrl,
+		setOverlayVideoLoader
+	} = props;
 
 	useEffect(() => {
-		console.log('NOT Ready -------------------->');
-	}, [])
-
+		if (playClicked && !playingBack) {
+			setOverlayVideoLoader(true);
+		} else {
+			setOverlayVideoLoader(false);
+		}
+	}, [playClicked, playingBack, setOverlayVideoLoader])
 
 	function onProgress(event: PlayerProgressEvent): void {
 		setPlayedSecconds(Math.round(event.playedSeconds))
@@ -36,35 +42,35 @@ export default function VideoPlayer(props: Props): ReactElement {
 
 	function playVideo(): void {
 		console.log('playVideo -------------------->');
-		setPlay(true)
+		setPlayClicked(true)
 	}
 
-	console.log('thumbnailUrl -------------------->', thumbnailUrl);
+	function onPlay() {
+		console.log('onPlay -------------------->',);
+		setPlayingBack(true);
+	}
+
+
 	return (
-		<>
-			<div>
-				<div className={styles.fleetingFeatureVideo}>
-					<ReactPlayer
-						url={videoUrl}
-						height="100%"
-						width="100%"
-						controls={false}
-						playing={play && playing}
-						muted
-						loop
-						onProgress={onProgress}
-						progressInterval={1000}
-						onReady={onReady}
-						fallback={<Loader />}
-						light
-						playIcon={
-							<div onClick={playVideo} style={{ zIndex: 999 }}>
-								<VideoPlayerThumbnail thumbnailUrl={thumbnailUrl} />
-							</div>
-						}
-					/>
-				</div>
-			</div >
-		</>
+		<div className={styles.fleetingFeatureVideo}>
+			<ReactPlayer
+				url={videoUrl}
+				height="100%"
+				width="100%"
+				controls={false}
+				playing={playClicked && isVisible}
+				muted
+				loop
+				onProgress={onProgress}
+				progressInterval={1000}
+				light
+				playIcon={
+					<div onClick={playVideo} style={{ zIndex: 999 }}>
+						<VideoPlayerThumbnail thumbnailUrl={thumbnailUrl} />
+					</div>
+				}
+				onPlay={onPlay}
+			/>
+		</div>
 	)
 }

@@ -3,9 +3,9 @@ import React, { ReactElement, RefObject, useRef, useState } from 'react';
 import VideoPlayer from '../VideoPlayer'
 import FeatureSteps from '../FeatureSteps';
 import { Divider } from 'antd';
-import data, { FleetingData } from '../../../../data'
+import { FleetingData } from '../../../../data'
 import useIsOnScreen from '../../../../hooks/useIsOnScreen';
-import VideoPlayerThumbnail from '../../../VideoPlayerThumbnail/VideoPlayerThumbnail';
+import Loader from '../../../Loader/Loader';
 
 interface Props {
 	data: FleetingData;
@@ -15,6 +15,8 @@ interface Props {
 
 export default function Feature(props: Props): ReactElement {
 	const [step, setStep] = useState(0);
+	const [overlayVideoLoader, setOverlayVideoLoader] = useState(false);
+
 	const { data: {
 		goToStep,
 		title,
@@ -53,15 +55,20 @@ export default function Feature(props: Props): ReactElement {
 						<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
 					</div>
 					<div className={styles.fleetingFeaturePanel} >
-						{/*{isVisible ?*/}
-						<VideoPlayer
-							setPlayedSecconds={stepTimer}
-							videoUrl={videoUrl}
-							playing
-							thumbnailUrl={thumbnailUrl}
-						/>
-						{/*: <VideoPlayerThumbnail thumbnailUrl={thumbnailUrl} />
-						}*/}
+						<div className={styles.videoContainer}>
+							<VideoPlayer
+								setPlayedSecconds={stepTimer}
+								videoUrl={videoUrl}
+								isVisible={isVisible}
+								thumbnailUrl={thumbnailUrl}
+								setOverlayVideoLoader={setOverlayVideoLoader}
+							/>
+							{overlayVideoLoader &&
+								<div className={styles.loaderContainer}>
+									<Loader />
+								</div>
+							}
+						</div>
 					</div>
 				</div>
 			</div >
