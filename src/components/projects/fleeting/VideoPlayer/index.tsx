@@ -1,8 +1,7 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 import ReactPlayer from 'react-player/lazy'
 import styles from './styles.module.css'
-import ClockLoader from "react-spinners/ClockLoader";
-import { css } from "@emotion/react";
+import Loader from '../../../Loader/Loader';
 interface Props {
 	setPlayedSecconds: (playedSeconds: number) => void;
 	playing: boolean;
@@ -17,24 +16,16 @@ interface PlayerProgressEvent {
 }
 
 export default function VideoPlayer(props: Props): ReactElement {
-	const [loading, setLoading] = useState(false);
 	const { setPlayedSecconds, playing, videoUrl } = props;
 
 	function onReady(): void {
-		setLoading((prevState) => !prevState);
+		console.log('Ready -------------------->');
 	}
-
-	console.log('loading -------------------->', loading);
+	console.log('NOT Ready -------------------->');
 
 	function onProgress(event: PlayerProgressEvent): void {
 		setPlayedSecconds(Math.round(event.playedSeconds))
 	}
-
-	const loader = (
-		<div className={styles.loaderContainer}>
-			<ClockLoader loading size={40} />
-		</div>
-	);
 
 	return (
 		<div className={styles.fleetingFeatureVideoContainer}>
@@ -50,10 +41,9 @@ export default function VideoPlayer(props: Props): ReactElement {
 					onProgress={onProgress}
 					progressInterval={1000}
 					onReady={onReady}
-					fallback={loader}
+					fallback={<Loader />}
 				/>
 			</div>
-			{/*{loader}*/}
-		</div>
+		</div >
 	)
 }

@@ -3,8 +3,9 @@ import React, { ReactElement, RefObject, useRef, useState } from 'react';
 import VideoPlayer from '../VideoPlayer'
 import FeatureSteps from '../FeatureSteps';
 import { Divider } from 'antd';
-import { FleetingData } from '../../../../data'
+import data, { FleetingData } from '../../../../data'
 import useIsOnScreen from '../../../../hooks/useIsOnScreen';
+import VideoPlayerThumbnail from '../../../VideoPlayerThumbnail/VideoPlayerThumbnail';
 
 interface Props {
 	data: FleetingData;
@@ -14,7 +15,14 @@ interface Props {
 
 export default function Feature(props: Props): ReactElement {
 	const [step, setStep] = useState(0);
-	const { data: { goToStep, title, stepDetails, videoUrl }, scrollToRefs, index } = props;
+	const { data: {
+		goToStep,
+		title,
+		stepDetails,
+		videoUrl,
+		thumbnailUrl },
+		scrollToRefs,
+		index } = props;
 
 	const visibilityRefTop = useRef(null);
 	const visibilityRefBottom = useRef(null);
@@ -25,32 +33,18 @@ export default function Feature(props: Props): ReactElement {
 		setStep(step)
 	}
 
-
-
-	const featureSteps = (
-		<FeatureSteps
-			step={step}
-			title={title}
-			index={index}
-			stepDetails={stepDetails}
-			scrollToRefs={scrollToRefs}
-		/>
-	)
-
-	const videoPlayer = (
-		<VideoPlayer
-			setPlayedSecconds={stepTimer}
-			videoUrl={videoUrl}
-			playing
-		/>
-	);
-
 	return (
 		<>
 			<div className={styles.featureContainer}>
 				<div className={styles.fleetingFeatureGrid}>
 					<div className={styles.fleetingFeaturePanel}>
-						{featureSteps}
+						<FeatureSteps
+							step={step}
+							title={title}
+							index={index}
+							stepDetails={stepDetails}
+							scrollToRefs={scrollToRefs}
+						/>
 					</div>
 					<div className={styles.verticalDividerContainer}>
 						<div ref={visibilityRefTop} />
@@ -59,7 +53,14 @@ export default function Feature(props: Props): ReactElement {
 						<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
 					</div>
 					<div className={styles.fleetingFeaturePanel} >
-						{isVisible && videoPlayer}
+						{isVisible ?
+							<VideoPlayer
+								setPlayedSecconds={stepTimer}
+								videoUrl={videoUrl}
+								playing
+							/>
+							: <VideoPlayerThumbnail thumbnailUrl={thumbnailUrl} />
+						}
 					</div>
 				</div>
 			</div >
