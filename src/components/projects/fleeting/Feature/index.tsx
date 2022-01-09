@@ -53,16 +53,15 @@ export default function Feature(props: Props): ReactElement {
 						<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
 					</div>
 					<div className={styles.fleetingFeaturePanel} >
-						<div className={styles.videoContainer} >
-							{isVisible ?
-								<VideoPlayer
-									setPlayedSecconds={stepTimer}
-									videoUrl={videoUrl}
-									playing
-								/>
-								: <VideoPlayerThumbnail thumbnailUrl={thumbnailUrl} />
-							}
-						</div>
+						{/*{isVisible ?*/}
+						<VideoPlayer
+							setPlayedSecconds={stepTimer}
+							videoUrl={videoUrl}
+							playing
+							thumbnailUrl={thumbnailUrl}
+						/>
+						{/*: <VideoPlayerThumbnail thumbnailUrl={thumbnailUrl} />
+						}*/}
 					</div>
 				</div>
 			</div >

@@ -15,7 +15,7 @@ const data: FleetingData[] = [
 	{
 		title: 'Sign up',
 		videoUrl: "/assets/sign_up_trimmed_grey_rotato_4k.mp4",
-		thumbnailUrl: "/assets/sign_up_thumbnail.png",
+		thumbnailUrl: "/assets/sign_up_thumbnail.jpg",
 		goToStep: (playedSeconds: number): number => {
 			switch (true) {
 				case playedSeconds < 13:
@@ -57,7 +57,7 @@ const data: FleetingData[] = [
 	{
 		title: 'Make a video call',
 		videoUrl: "assets/call_from_contacts_full_edit_grey_rotato_4k.mp4",
-		thumbnailUrl: "/assets/sign_up_thumbnail.png",
+		thumbnailUrl: "/assets/sign_up_thumbnail.jpg",
 		goToStep: (playedSeconds: number): number => {
 			switch (true) {
 				case playedSeconds < 3:
@@ -109,7 +109,7 @@ const data: FleetingData[] = [
 	{
 		title: 'Incoming video call',
 		videoUrl: "/assets/incoming_background_call_timeout_trimmed_grey_rotato_4k.mp4",
-		thumbnailUrl: "/assets/sign_up_thumbnail.png",
+		thumbnailUrl: "/assets/sign_up_thumbnail.jpg",
 		goToStep: (playedSeconds: number): number => {
 			switch (true) {
 				case playedSeconds < 5:
@@ -139,7 +139,7 @@ const data: FleetingData[] = [
 	{
 		title: 'Missed call',
 		videoUrl: "/assets/missed_call_trimmed_grey_rotato_4k.mp4",
-		thumbnailUrl: "/assets/sign_up_thumbnail.png",
+		thumbnailUrl: "/assets/sign_up_thumbnail.jpg",
 		goToStep: (playedSeconds: number): number => {
 			switch (true) {
 				case playedSeconds < 5:
@@ -169,7 +169,7 @@ const data: FleetingData[] = [
 	{
 		title: 'Decline the call',
 		videoUrl: "/assets/decline_call_trimmed_grey_rotato_4k.mp4",
-		thumbnailUrl: "/assets/sign_up_thumbnail.png",
+		thumbnailUrl: "/assets/sign_up_thumbnail.jpg",
 		goToStep: (playedSeconds: number): number => {
 			switch (true) {
 				case playedSeconds < 5:
@@ -193,7 +193,7 @@ const data: FleetingData[] = [
 	{
 		title: 'Invite to Fleeting',
 		videoUrl: "/assets/invite_trimmed_grey_rotato_4k.mp4",
-		thumbnailUrl: "/assets/sign_up_thumbnail.png",
+		thumbnailUrl: "/assets/sign_up_thumbnail.jpg",
 		goToStep: (playedSeconds: number): number => {
 			switch (true) {
 				case playedSeconds < 5:
@@ -217,7 +217,7 @@ const data: FleetingData[] = [
 	{
 		title: 'Share, contact, visit',
 		videoUrl: "/assets/share_trimmed_grey_rotato_4k.mp4",
-		thumbnailUrl: "/assets/sign_up_thumbnail.png",
+		thumbnailUrl: "/assets/sign_up_thumbnail.jpg",
 		goToStep: (playedSeconds: number): number => {
 			switch (true) {
 				case playedSeconds < 5:
