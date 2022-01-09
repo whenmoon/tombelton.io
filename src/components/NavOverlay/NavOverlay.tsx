@@ -11,7 +11,6 @@ import {
 	ThunderboltTwoTone
 } from '@ant-design/icons';
 import styles from './styles.module.css'
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useWindowDimensions from '../../hooks/useWindowSize';
 
@@ -19,12 +18,6 @@ const { SubMenu } = Menu;
 
 export function NavOverlay(): ReactElement {
 	const [menuCollapsed, setMenuCollapsed] = useState(true);
-
-	useEffect(() => {
-		setTimeout(() => {
-			toast.dark("Welcome! Use the menu on the left to view stuff! :)")
-		}, 1000);
-	}, [])
 
 	const windowDimensions = useWindowDimensions()
 
@@ -52,13 +45,6 @@ export function NavOverlay(): ReactElement {
 
 	return (
 		<div className={styles.navOverlayContainer}>
-			{!smallScreen && < ToastContainer
-				position="top-right"
-				autoClose={5000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				pauseOnHover
-			/>}
 			<div className={styles.navMenuContainer}>
 				<Button
 					type="primary"

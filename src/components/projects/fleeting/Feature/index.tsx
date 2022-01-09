@@ -40,8 +40,8 @@ export default function Feature(props: Props): ReactElement {
 	const videoPlayer = (
 		<VideoPlayer
 			setPlayedSecconds={stepTimer}
-			playing={isVisible}
 			videoUrl={videoUrl}
+			playing
 		/>
 	);
 
@@ -59,7 +59,7 @@ export default function Feature(props: Props): ReactElement {
 						<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
 					</div>
 					<div className={styles.fleetingFeaturePanel} >
-						{videoPlayer}
+						{isVisible && videoPlayer}
 					</div>
 				</div>
 			</div >
