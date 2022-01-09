@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import ReactPlayer from 'react-player/lazy'
 import styles from './styles.module.css'
 import Loader from '../../../Loader/Loader';
@@ -21,14 +21,18 @@ export default function VideoPlayer(props: Props): ReactElement {
 	function onReady(): void {
 		console.log('Ready -------------------->');
 	}
-	console.log('NOT Ready -------------------->');
+
+	useEffect(() => {
+		console.log('NOT Ready -------------------->');
+	}, [])
+
 
 	function onProgress(event: PlayerProgressEvent): void {
 		setPlayedSecconds(Math.round(event.playedSeconds))
 	}
 
 	return (
-		<div className={styles.fleetingFeatureVideoContainer}>
+		<div>
 			<div className={styles.fleetingFeatureVideo}>
 				<ReactPlayer
 					url={videoUrl}

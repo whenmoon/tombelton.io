@@ -32,11 +32,11 @@ export default function FeatureSteps(props: Props): ReactElement {
 		setMouseOverIcon((prevState) => !prevState)
 	}
 
-	const isScrollRef = scrollToRefs.current && scrollToRefs.current[index + 1];
+	const isScrollRef = scrollToRefs.current && scrollToRefs.current[index];
 
 	function onDownIconClick(): void {
 		if (isScrollRef) {
-			const scrollRef = scrollToRefs.current[index + 1];
+			const scrollRef = scrollToRefs.current[index];
 			scrollRef!.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}

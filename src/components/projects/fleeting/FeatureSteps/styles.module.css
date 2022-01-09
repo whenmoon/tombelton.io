@@ -4,6 +4,7 @@
 	justify-content: center;
 	align-items: flex-end;
 	width: 100%;
+	padding-right: 5%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -14,7 +15,6 @@
 
 .stepsContainer {
 	max-width: 400px;
-	padding-right: 50px;
 }
 
 @media screen and (max-width: 1000px) {
