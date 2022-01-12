@@ -5,7 +5,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border: 1px red solid;
+	/*border: 1px red solid;*/
 }
 
 @media screen and (max-width: 300px) {
@@ -61,10 +61,11 @@
 .horizontallDividerContainer {
 	background-color: rgb(219, 219, 219);
 	width: 100%;
-	height: 1px;
+	height: 20px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	padding-top: 10px;
 }
 
 .horizontallDivider {
@@ -78,20 +79,48 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	width: 100%;
+	max-width: 470px;
+	max-height: 100%;
 	position: relative;
 }
 
 .loaderContainer {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	position: absolute;
 	top: 0px;
-	left: 0px;
+	left: 0%;
 	bottom: 0px;
 	right: 0px;
 	z-index: 999;
+	/*height: 100% !important;*/
+}
+
+@media screen and (max-width: 1000px) {
+	.loaderContainer {
+		justify-content: center;
+		left: 0px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.loaderContainer {
+		left: 50%;
+	}
+}
+
+@media screen and (min-width: 2000px) {
+	.loaderContainer {
+		left: 40%;
+	}
+}
+
+@media screen and (min-width: 2600px) {
+	.loaderContainer {
+		left: 35%;
+	}
 }
 
 /*border: 1px red solid;*/

@@ -42,6 +42,7 @@ export default function FeatureSteps(props: Props): ReactElement {
 	}
 
 	function onInfoIconClick(): void {
+		console.log('onInfoIconClick -------------------->',);
 		setShowStepsOnSmallScreen((prevState) => !prevState)
 	}
 
@@ -75,6 +76,7 @@ export default function FeatureSteps(props: Props): ReactElement {
 						/>
 					))}
 				</Steps>
+				{showStepsOnSmallScreen && <div className={styles.smallScreenStepsPadding}></div>}
 			</div>
 			<div className={styles.downIconContainer}>
 				<div
