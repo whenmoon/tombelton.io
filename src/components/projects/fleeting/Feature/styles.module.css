@@ -1,14 +1,87 @@
 .featureContainer {
-	background-color: rgb(219, 219, 219);
+	/*background-color: rgb(219, 219, 219);
 	min-height: 80vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	flex-direction: column;*/
 	/*border: 1px red solid;*/
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (min-width: 150px) {
+	.featureContainer {
+		background-color: rgb(219, 219, 219);
+		/*min-height: 80vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;*/
+		height: 892px;
+		border: 1px red solid;
+	}
+	
+	.fleetingFeatureGrid {
+		display: flex;
+		border: 1px solid blue;
+		height: 890px;
+	}
+	
+	.fleetingFeaturePanel {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		width: 100%;
+		border: 1px solid green;
+	}
+
+	.verticalDividerContainer {
+		display: none;
+	}
+
+	.horizontallDividerContainer {
+		background-color: rgb(219, 219, 219);
+		width: 100%;
+		height: 20px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		padding-top: 10px;
+	}
+	
+	.horizontallDivider {
+		width: 25vw;
+		height: 1px;
+		background-color: rgb(206, 206, 206);
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.featureContainer {
+		/*background-color: rgb(219, 219, 219);
+		min-height: 80vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;*/
+		height: 712px;
+		border: 1px red solid;
+	}
+}
+
+@media screen and (min-width: 2600px) {
+	.featureContainer {
+		/*background-color: rgb(219, 219, 219);
+		min-height: 80vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;*/
+		height: 1000px;
+		border: 1px red solid;
+	}
+}
+
+/*@media screen and (max-width: 300px) {
 	.featureContainer {
 		min-height: 40vh;
 	}
@@ -23,11 +96,12 @@
 	.featureContainer {
 		min-height: 60vh;
 	}
-}
+}*/
 
-.fleetingFeatureGrid {
+/*.fleetingFeatureGrid {
 	width: 60vw;
 	display: flex;
+	border: 1px red blue;
 }
 
 @media screen and (max-width: 1000px) {
@@ -35,9 +109,9 @@
 		flex-direction: column;
 		width: 100vw;
 	}
-}
+}*/
 
-.fleetingFeaturePanel {
+/*.fleetingFeaturePanel {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -96,9 +170,9 @@
 	right: 0px;
 	z-index: 999;
 	/*height: 100% !important;*/
-}
+/*}*/
 
-@media screen and (max-width: 1000px) {
+/*@media screen and (max-width: 1000px) {
 	.loaderContainer {
 		justify-content: center;
 		left: 0px;
@@ -121,6 +195,6 @@
 	.loaderContainer {
 		left: 35%;
 	}
-}
+}*/
 
 /*border: 1px red solid;*/

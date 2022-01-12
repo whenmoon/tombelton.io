@@ -54,7 +54,7 @@ export default function Feature(props: Props): ReactElement {
 						<div ref={visibilityRefBottom} />
 						<div ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }} />
 					</div>
-					<div className={styles.fleetingFeaturePanel} >
+					{/*<div className={styles.fleetingFeaturePanel} >
 						<div className={styles.videoContainer}>
 							<VideoPlayer
 								setPlayedSecconds={stepTimer}
@@ -69,7 +69,7 @@ export default function Feature(props: Props): ReactElement {
 								</div>
 							}
 						</div>
-					</div>
+					</div>*/}
 				</div>
 			</div >
 			<div className={styles.horizontallDividerContainer}>
