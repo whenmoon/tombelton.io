@@ -60,6 +60,22 @@ export default function FeatureSteps(props: Props): ReactElement {
 					}}
 					/>
 				</div>
+				<div
+					className={styles.smallScreenDownIconInnerContainer}
+					onMouseEnter={onIconMouseEnterAndExit}
+					onMouseLeave={onIconMouseEnterAndExit}
+					onClick={onDownIconClick}
+				>
+					{isScrollRef &&
+						<DownCircleOutlined
+							style={{
+								fontSize: 30, color: mouseOverIcon
+									? 'rgb(51, 146, 259)'
+									: 'rgb(159, 159, 159)'
+							}}
+						/>
+					}
+				</div>
 			</div>
 			<div className={showStepsOnSmallScreen ? styles.stepsContainerSmallScreen : styles.stepsContainer}>
 				<Steps
