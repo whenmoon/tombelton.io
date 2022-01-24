@@ -2,11 +2,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
+	/*border: 1px red solid;*/
+
 }
 
-@media screen and (max-width: 1000px) {
+/*@media screen and (max-width: 1000px) {
 	.loaderContainer {
 		justify-content: center;
 		padding-left: 0px;
 	}
-}
+}*/

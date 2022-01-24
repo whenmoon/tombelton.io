@@ -27,7 +27,7 @@ export default function useIsOnScreen(
 		}
 	}, [primaryRef, secondaryRef, useDualRefs])
 
-	if (!primaryRef && !secondaryRef) return true;
+	if (!primaryRef && !secondaryRef) return false;
 
 	if (useDualRefs) return isPrimaryIntersecting && isSecondaryIntersecting;
 

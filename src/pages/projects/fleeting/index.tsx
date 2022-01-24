@@ -13,6 +13,7 @@ export default function Fleeting() {
 						data={data}
 						index={index}
 						scrollToRefs={scrollToRefs}
+						numOfFeatures={featureData.length}
 					/>
 				);
 			})}

@@ -9,9 +9,8 @@ interface Props {
 export default function Loader(props: Props): ReactElement {
 	const loader = (
 		<div className={styles.loaderContainer}>
-			<PropagateLoader loading size={18} />
+			<PropagateLoader loading size={15} />
 		</div>
 	);
 	return loader;
 }
-7

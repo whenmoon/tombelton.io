@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactElement, RefObject, SetStateAction, useState } from "react";
+import React, { Dispatch, ReactElement, RefObject, SetStateAction, useState, useRef } from "react";
 import { Steps } from "antd";
 import styles from './styles.module.css'
 import { InfoCircleOutlined, DownCircleOutlined } from '@ant-design/icons';
@@ -10,12 +10,13 @@ interface Props {
 	index: number;
 	scrollToRefs: RefObject<(HTMLDivElement | null)[]>;
 	stepDetails: StepDetail[];
+	numOfFeatures: number
 }
 
 const { Step } = Steps;
 
 export default function FeatureSteps(props: Props): ReactElement {
-	const [mouseOverIcon, setMouseOverIcon] = useState(false);
+	const [mouseOverDownIcon, setMouseOverDownIcon] = useState(false);
 	const [showStepsOnSmallScreen, setShowStepsOnSmallScreen] = useState(false);
 
 	const {
@@ -24,25 +25,25 @@ export default function FeatureSteps(props: Props): ReactElement {
 		index,
 		scrollToRefs,
 		stepDetails,
+		numOfFeatures
 	} = props;
 
 	function progressDot(dot: ReactElement): ReactElement { return dot };
 
-	function onIconMouseEnterAndExit(): void {
-		setMouseOverIcon((prevState) => !prevState)
+	function onDownIconMouseEnterAndExit(): void {
+		setMouseOverDownIcon((prevState) => !prevState)
 	}
 
-	const isScrollRef = scrollToRefs.current && scrollToRefs.current[index];
+	const isLastItem = numOfFeatures === index + 1;
 
 	function onDownIconClick(): void {
-		if (isScrollRef) {
-			const scrollRef = scrollToRefs.current[index];
+		if (!isLastItem && scrollToRefs.current) {
+			const scrollRef = scrollToRefs.current[index + 1];
 			scrollRef!.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	}
 
 	function onInfoIconClick(): void {
-		console.log('onInfoIconClick -------------------->',);
 		setShowStepsOnSmallScreen((prevState) => !prevState)
 	}
 
@@ -62,14 +63,14 @@ export default function FeatureSteps(props: Props): ReactElement {
 				</div>
 				<div
 					className={styles.smallScreenDownIconInnerContainer}
-					onMouseEnter={onIconMouseEnterAndExit}
-					onMouseLeave={onIconMouseEnterAndExit}
+					onMouseEnter={onDownIconMouseEnterAndExit}
+					onMouseLeave={onDownIconMouseEnterAndExit}
 					onClick={onDownIconClick}
 				>
-					{isScrollRef &&
+					{!isLastItem &&
 						<DownCircleOutlined
 							style={{
-								fontSize: 30, color: mouseOverIcon
+								fontSize: 30, color: mouseOverDownIcon
 									? 'rgb(51, 146, 259)'
 									: 'rgb(159, 159, 159)'
 							}}
@@ -97,14 +98,14 @@ export default function FeatureSteps(props: Props): ReactElement {
 			<div className={styles.downIconContainer}>
 				<div
 					className={styles.downIconInnerContainer}
-					onMouseEnter={onIconMouseEnterAndExit}
-					onMouseLeave={onIconMouseEnterAndExit}
+					onMouseEnter={onDownIconMouseEnterAndExit}
+					onMouseLeave={onDownIconMouseEnterAndExit}
 					onClick={onDownIconClick}
 				>
-					{isScrollRef &&
+					{!isLastItem &&
 						<DownCircleOutlined
 							style={{
-								fontSize: 30, color: mouseOverIcon
+								fontSize: 30, color: mouseOverDownIcon
 									? 'rgb(51, 146, 259)'
 									: 'rgb(159, 159, 159)'
 							}}

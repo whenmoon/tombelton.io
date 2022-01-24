@@ -50,7 +50,6 @@ export default function VideoPlayer(props: Props): ReactElement {
 		setPlayingBack(true);
 	}
 
-
 	return (
 		<div className={styles.fleetingFeatureVideo}>
 			<ReactPlayer

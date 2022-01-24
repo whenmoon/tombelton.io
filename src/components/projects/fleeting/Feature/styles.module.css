@@ -17,27 +17,24 @@
 		align-items: center;
 		flex-direction: column;*/
 		height: 892px;
-		border: 1px red solid;
+		/*border: 1px red solid;*/
 	}
-	
 	.fleetingFeatureGrid {
 		display: flex;
-		border: 1px solid blue;
+		flex-direction: column;
+		/*border: 1px solid blue;*/
 		height: 890px;
 	}
-	
 	.fleetingFeaturePanel {
 		display: flex;
 		justify-content: center;
 		align-items: flex-start;
 		width: 100%;
-		border: 1px solid green;
+		/*border: 1px solid green;*/
 	}
-
 	.verticalDividerContainer {
 		display: none;
 	}
-
 	.horizontallDividerContainer {
 		background-color: rgb(219, 219, 219);
 		width: 100%;
@@ -47,11 +44,44 @@
 		justify-content: space-around;
 		padding-top: 10px;
 	}
-	
 	.horizontallDivider {
 		width: 25vw;
 		height: 1px;
 		background-color: rgb(206, 206, 206);
+	}
+	.smallscreenScrollRef{
+		/*border: 1px red solid;*/
+		width: 1px;
+		height: 1px
+	}
+	.smallScreenVisabilityRef{
+		/*border: 1px red solid;*/
+		width: 1px;
+		height: 1px
+	}
+	.videoContainer {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		width: 100%;
+		max-width: 470px;
+		/*max-height: auto;*/
+		position: relative;
+	}
+	.loaderContainer {
+		/*justify-content: center;
+		left: 0px;*/
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
+		z-index: 999;
+		height: 500px;
 	}
 }
 
@@ -65,6 +95,10 @@
 		flex-direction: column;*/
 		height: 712px;
 		border: 1px red solid;
+	}
+	
+	.smallscreenVisabilityRef{
+		display: none;	
 	}
 }
 
