@@ -77,7 +77,7 @@ export default function Feature(props: Props): ReactElement {
 								setOverlayVideoLoader={setOverlayVideoLoader}
 							/>
 							{overlayVideoLoader &&
-								<div className={styles.loaderContainer}>
+								<div>
 									<Loader />
 								</div>
 							}

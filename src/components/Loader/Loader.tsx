@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import PropagateLoader from "react-spinners/PropagateLoader";
+import PropagateLoader from "react-spinners/MoonLoader";
 import styles from './styles.module.css'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 export default function Loader(props: Props): ReactElement {
 	const loader = (
 		<div className={styles.loaderContainer}>
-			<PropagateLoader loading size={15} />
+			<PropagateLoader loading size={35} />
 		</div>
 	);
 	return loader;

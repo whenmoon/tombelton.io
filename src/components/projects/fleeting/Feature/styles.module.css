@@ -11,19 +11,20 @@
 @media screen and (min-width: 150px) {
 	.featureContainer {
 		background-color: rgb(219, 219, 219);
-		/*min-height: 80vh;
-		display: flex;
+		/*display: flex;
 		justify-content: center;
-		align-items: center;
-		flex-direction: column;*/
-		height: 892px;
+		align-items: center;*/
+		/*flex-direction: column;*/
+		/*height: 892px;*/
 		/*border: 1px red solid;*/
+		padding-top: 15px;
 	}
 	.fleetingFeatureGrid {
-		display: flex;
-		flex-direction: column;
+		min-height: 100vh;
+		/*display: flex;
+		flex-direction: column;*/
 		/*border: 1px solid blue;*/
-		height: 890px;
+		/*height: 890px;*/
 	}
 	.fleetingFeaturePanel {
 		display: flex;
@@ -67,10 +68,9 @@
 		max-width: 470px;
 		/*max-height: auto;*/
 		position: relative;
+		margin-top: -15px;
 	}
-	.loaderContainer {
-		/*justify-content: center;
-		left: 0px;*/
+	/*.loaderContainer {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
@@ -82,8 +82,14 @@
 		right: 0px;
 		z-index: 999;
 		height: 500px;
-	}
+	}*/
 }
+
+/*@media screen and (max-width: 450px) {
+	.fleetingFeatureGrid {
+		min-height: 60vh;
+	}
+}*/
 
 @media screen and (min-width: 1000px) {
 	.featureContainer {

@@ -50,15 +50,17 @@ export default function FeatureSteps(props: Props): ReactElement {
 	return (
 		<div className={styles.stepsPanelContainer}>
 			<div className={styles.titleContainer}>
-				<div className={styles.titleInnerContainer}>
-					<h1 className={styles.title}>{title}</h1>
-				</div>
+				{/*<div className={styles.titleInnerContainer}>*/}
+				<h1 className={styles.title}>{title}</h1>
+				{/*</div>*/}
+				{/*<div style={{ paddingLeft: '5%' }} />*/}
 				<div className={styles.infoIconContainer} onClick={onInfoIconClick}>
 					<InfoCircleOutlined style={{
-						fontSize: 30, color: showStepsOnSmallScreen
+						color: showStepsOnSmallScreen
 							? 'rgb(51, 146, 259)'
 							: 'rgb(159, 159, 159)'
 					}}
+						className={styles.icon}
 					/>
 				</div>
 				<div
@@ -70,10 +72,11 @@ export default function FeatureSteps(props: Props): ReactElement {
 					{!isLastItem &&
 						<DownCircleOutlined
 							style={{
-								fontSize: 30, color: mouseOverDownIcon
+								color: mouseOverDownIcon
 									? 'rgb(51, 146, 259)'
 									: 'rgb(159, 159, 159)'
 							}}
+							className={styles.icon}
 						/>
 					}
 				</div>
@@ -105,10 +108,11 @@ export default function FeatureSteps(props: Props): ReactElement {
 					{!isLastItem &&
 						<DownCircleOutlined
 							style={{
-								fontSize: 30, color: mouseOverDownIcon
+								color: mouseOverDownIcon
 									? 'rgb(51, 146, 259)'
 									: 'rgb(159, 159, 159)'
 							}}
+							className={styles.icon}
 						/>
 					}
 				</div>
