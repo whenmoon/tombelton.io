@@ -39,7 +39,9 @@ export default function FeatureSteps(props: Props): ReactElement {
 	function onDownIconClick(): void {
 		if (!isLastItem && scrollToRefs.current) {
 			const scrollRef = scrollToRefs.current[index + 1];
-			scrollRef!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			const y = scrollRef!.getBoundingClientRect().top + window.pageYOffset - 10;
+			window.scrollTo({ top: y, behavior: 'smooth' });
+			//scrollRef!.scrollIntoView({ behavior: 'smooth', block: "start", inline: "nearest" });
 		}
 	}
 

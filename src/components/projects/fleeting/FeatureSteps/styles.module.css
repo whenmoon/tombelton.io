@@ -20,7 +20,6 @@
 		align-items: center;
 		width: 100%;
 		/*height:*/
-		/*border: 1px red solid;*/
 	}
 	.stepsContainerSmallScreen {
 		max-width: 400px;
@@ -37,14 +36,9 @@
 		padding-bottom: 20px;
 	}
 	.titleContainer {
-		/*width: auto;*/
-		/*width: 100%;*/
 		display: flex;
-		margin: 0px 20px 0px 20px;
-		/*justify-content: space-around;*/
-		/*align-items: space-around;*/
-		/*border: 1px red solid;*/
 	}
+
 	.titleInnerContainer {
 		/*border: 1px red solid;*/
 		/*display: flex;*/
@@ -60,6 +54,7 @@
 		/*min-height: 62px;*/
 		font-size: 20px;
 		padding-right: 1em;
+		padding-bottom: 1px;
 		/*line-height: 0px;*/
 	}
 	.infoIconContainer {
@@ -69,7 +64,7 @@
 		padding-right: 20px;
 		align-self: center;
 		display: inline;
-		z-index: 999;
+		z-index: 1000;
 		/*border: 1px red solid;*/
 	}
 	.smallScreenDownIconInnerContainer {		
@@ -78,7 +73,7 @@
 		/*padding-right: 25px;*/
 		align-self: center;
 		display: inline;
-		z-index: 999;
+		z-index: 1000;
 	}
 	.downIconInnerContainer {
 		display: none;

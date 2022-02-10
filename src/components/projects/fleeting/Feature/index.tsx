@@ -45,12 +45,12 @@ export default function Feature(props: Props): ReactElement {
 	return (
 		<>
 			<div className={styles.featureContainer}>
+				<div
+					ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }}
+					className={styles.smallscreenScrollRef}
+				/>
 				<div className={styles.fleetingFeatureGrid}>
 					<div className={styles.fleetingFeaturePanel}>
-						<div
-							ref={(node) => { if (scrollToRefs.current) scrollToRefs.current[index] = node }}
-							className={styles.smallscreenScrollRef}
-						/>
 						<FeatureSteps
 							step={step}
 							title={title}
