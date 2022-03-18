@@ -95,6 +95,7 @@ export default function FeatureSteps(props: Props): ReactElement {
 							title={title}
 							description={description}
 							key={`key ${title}`}
+							style={{ fontSize: 1 }}
 						/>
 					))}
 				</Steps>

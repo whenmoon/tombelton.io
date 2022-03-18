@@ -13,7 +13,7 @@
 
 
 
-@media screen and (min-width: 150px) {
+@media screen and (max-width: 999px) {
 	.stepsPanelContainer {
 		display: flex;
 		flex-direction: column;
@@ -24,7 +24,7 @@
 	.stepsContainerSmallScreen {
 		max-width: 400px;
 		height: 100%;
-		padding: 25px 30px 45px 25px;
+		padding: 25px 12% 45px 12%;
 		margin-bottom: -60px;
 		/*border: 1px blue solid;*/
 	}
@@ -153,13 +153,6 @@
 	}*/
 }
 
-@media screen and (max-width: 300px) {
-	/*.titleContainer {
-		padding-left: 10%;
-	}*/
-}
-
-
 
 @media screen and (max-width: 600px) {
 	/*.title {
@@ -177,12 +170,6 @@
 
 @media screen and (max-width: 1000px) {
 
-}
-
-@media screen and (max-width: 300px) {
-	/*.infoIconContainer {
-		padding-right: 25px;
-	}*/
 }
 
 @media screen and (max-width: 600px) {

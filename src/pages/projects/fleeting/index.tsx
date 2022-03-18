@@ -5,7 +5,7 @@ import featureData from '../../../data'
 export default function Fleeting() {
 	const scrollToRefs = useRef<(HTMLDivElement | null)[]>([])
 	return (
-		<>
+		<div style={{ minWidth: 240 }}>
 			{featureData.map((data, index) => {
 				return (
 					<Feature
@@ -17,6 +17,6 @@ export default function Fleeting() {
 					/>
 				);
 			})}
-		</>
+		</div>
 	)
 }
